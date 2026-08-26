@@ -14,6 +14,14 @@ const required = document.querySelector('#required');
 const clear = document.querySelector('#clear');
 const explanationToggle = document.querySelector('#explanation-toggle');
 const explanation = document.querySelector('#explanation');
+const calculatorLayout = document.querySelector('.calculator-layout');
+const resultPanel = document.querySelector('.result-panel');
+const mobileLayoutQuery = window.matchMedia('(max-width: 900px)');
+
+function syncPanelOrder() {
+  if (mobileLayoutQuery.matches) calculatorLayout.prepend(resultPanel);
+  else calculatorLayout.append(resultPanel);
+}
 
 function render() {
   const entries = fields.map(({ note, eac }) => ({
@@ -66,4 +74,6 @@ explanationToggle.addEventListener('click', () => {
     : 'Como esse cálculo funciona?';
 });
 
+mobileLayoutQuery.addEventListener('change', syncPanelOrder);
+syncPanelOrder();
 render();
