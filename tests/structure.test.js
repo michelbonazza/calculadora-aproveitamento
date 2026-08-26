@@ -18,6 +18,13 @@ test('live score identifies its result heading to screen readers', async () => {
   assert.match(html, /id="score"[^>]*aria-labelledby="result-title"/);
 });
 
+test('source keeps entry controls before result panel for desktop navigation', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  assert.ok(
+    html.indexOf('<section class="calculator-entry"') < html.indexOf('<aside class="result-panel"'),
+  );
+});
+
 test('page declares an inline favicon instead of requesting a missing file', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /<link rel="icon" href="data:image\/svg\+xml,/);
