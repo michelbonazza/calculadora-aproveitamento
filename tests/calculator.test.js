@@ -20,8 +20,15 @@ test('parseGrade rejects text and values outside zero to ten', () => {
   assert.equal(parseGrade('10,1').valid, false);
 });
 
-test('effectiveGrade uses the larger note or EAC', () => {
-  assert.deepEqual(effectiveGrade('6,5', '8'), { score: 8, invalid: false });
+test('effectiveGrade adds EAC to the trimester grade', () => {
+  assert.deepEqual(effectiveGrade('5', '1'), { score: 6, invalid: false });
+});
+
+test('effectiveGrade caps combined trimester grade at ten', () => {
+  assert.deepEqual(effectiveGrade('9,5', '1'), { score: 10, invalid: false });
+});
+
+test('effectiveGrade keeps trimester empty when both grades are blank', () => {
   assert.deepEqual(effectiveGrade('', ''), { score: null, invalid: false });
 });
 
