@@ -9,7 +9,7 @@ Criar site estático para estudantes brasileiros calcularem aproveitamento escol
 - Seis campos: nota e E.A.C. para cada trimestre.
 - Pesos fixos `3`, `3` e `4`.
 - Média mínima fixa `6,0`.
-- E.A.C. substitui nota quando maior.
+- E.A.C. soma à nota do trimestre, com limite de `10,0`.
 - Campos vazios contam como zero na projeção.
 - Atualização imediata de resultado, fórmula, status, progresso e previsão.
 - Explicação expansível e limpeza dos campos.
@@ -40,7 +40,7 @@ Sem gradientes, glassmorphism, sombras fortes, cards excessivos ou ícones decor
 
 ## Regras de cálculo
 
-Cada campo aceita vazio ou número decimal de `0` a `10`, com vírgula ou ponto. Para cada trimestre, resultado efetivo é maior valor entre nota e E.A.C.; se ambos vazios, trimestre permanece sem nota.
+Cada campo aceita vazio ou número decimal de `0` a `10`, com vírgula ou ponto. Ao fim de cada trimestre, resultado efetivo soma nota e E.A.C., limitado a `10,0`; se ambos vazios, trimestre permanece sem nota.
 
 ```text
 aproveitamento = (3 × T1 + 3 × T2 + 4 × T3) ÷ 10
@@ -76,7 +76,7 @@ Entrada é normalizada durante leitura, não destruída durante digitação. Tex
 
 ## Testes e verificação
 
-Testes unitários cobrem normalização decimal, maior valor entre nota e E.A.C., média ponderada, campos vazios, aprovação, nota necessária e impossibilidade matemática. Verificação final inclui testes automatizados, inspeção de console, teclado, viewport desktop e mobile, além de comparação visual com anexo.
+Testes unitários cobrem normalização decimal, soma de nota e E.A.C., teto de `10,0`, média ponderada, campos vazios, aprovação, nota necessária e impossibilidade matemática. Verificação final inclui testes automatizados, inspeção de console, teclado, viewport desktop e mobile, além de comparação visual com anexo.
 
 ## Publicação
 
