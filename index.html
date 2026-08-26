@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calcule seu aproveitamento escolar por trimestre.">
+    <title>Calculadora de Aproveitamento</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><text y=%22.9em%22>6</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">Boletim pessoal</p>
+      <h1>Calculadora de Aproveitamento</h1>
+      <p class="intro">Veja sua média ponderada e o que falta para alcançar a média 6,0.</p>
+    </header>
+
+    <main class="calculator-layout">
+      <section class="calculator-entry" aria-labelledby="grades-title">
+        <div class="section-heading">
+          <p class="eyebrow">Suas notas</p>
+          <h2 id="grades-title">Informe cada trimestre</h2>
+          <p>Se a E.A.C. for maior, ela substitui a nota do trimestre.</p>
+        </div>
+
+        <form id="grades-form" novalidate>
+          <section class="trimester trimester-one" aria-labelledby="trimester-1-title">
+            <header class="trimester-header">
+              <p class="trimester-number">01</p>
+              <div>
+                <h3 id="trimester-1-title">1º trimestre</h3>
+                <p>Peso 3</p>
+              </div>
+            </header>
+            <div class="grade-fields">
+              <div class="field">
+                <label for="n1">Nota</label>
+                <input id="n1" name="n1" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err1" maxlength="5">
+              </div>
+              <div class="field">
+                <label for="e1">E.A.C.</label>
+                <input id="e1" name="e1" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err1" maxlength="5">
+              </div>
+            </div>
+            <p id="err1" class="field-error" role="status"></p>
+          </section>
+
+          <section class="trimester trimester-two" aria-labelledby="trimester-2-title">
+            <header class="trimester-header">
+              <p class="trimester-number">02</p>
+              <div>
+                <h3 id="trimester-2-title">2º trimestre</h3>
+                <p>Peso 3</p>
+              </div>
+            </header>
+            <div class="grade-fields">
+              <div class="field">
+                <label for="n2">Nota</label>
+                <input id="n2" name="n2" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err2" maxlength="5">
+              </div>
+              <div class="field">
+                <label for="e2">E.A.C.</label>
+                <input id="e2" name="e2" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err2" maxlength="5">
+              </div>
+            </div>
+            <p id="err2" class="field-error" role="status"></p>
+          </section>
+
+          <section class="trimester trimester-three" aria-labelledby="trimester-3-title">
+            <header class="trimester-header">
+              <p class="trimester-number">03</p>
+              <div>
+                <h3 id="trimester-3-title">3º trimestre</h3>
+                <p>Peso 4</p>
+              </div>
+            </header>
+            <div class="grade-fields">
+              <div class="field">
+                <label for="n3">Nota</label>
+                <input id="n3" name="n3" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err3" maxlength="5">
+              </div>
+              <div class="field">
+                <label for="e3">E.A.C.</label>
+                <input id="e3" name="e3" type="text" inputmode="decimal" autocomplete="off" placeholder="0,0" aria-describedby="err3" maxlength="5">
+              </div>
+            </div>
+            <p id="err3" class="field-error" role="status"></p>
+          </section>
+
+          <button id="clear" type="button">Limpar campos</button>
+        </form>
+      </section>
+
+      <aside class="result-panel" aria-labelledby="result-title">
+        <p class="eyebrow">Aproveitamento</p>
+        <h2 id="result-title">Sua média atual</h2>
+        <output id="score" aria-live="polite" aria-labelledby="result-title">—</output>
+        <p id="status">Preencha suas notas para acompanhar sua média.</p>
+        <p id="formula" class="formula">(3 × — + 3 × — + 4 × —) ÷ 10</p>
+        <div class="progress-wrap">
+          <label for="progress">Progresso até média 6,0</label>
+          <progress id="progress" value="0" max="10">0</progress>
+        </div>
+        <p id="required">Informe as notas para ver a previsão.</p>
+        <button id="explanation-toggle" type="button" aria-expanded="false" aria-controls="explanation">Como calculamos?</button>
+        <section id="explanation" class="explanation" hidden aria-labelledby="explanation-title">
+          <h3 id="explanation-title">Como funciona o cálculo</h3>
+          <p>Aproveitamento = (3 × 1º trimestre + 3 × 2º trimestre + 4 × 3º trimestre) ÷ 10.</p>
+          <p>Em cada trimestre, usamos a maior nota entre a avaliação e a E.A.C.</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>As notas permanecem somente neste dispositivo.</p>
+    </footer>
+
+    <script type="module" src="./assets/js/app.js"></script>
+  </body>
+</html>
