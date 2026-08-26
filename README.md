@@ -10,7 +10,7 @@ Os trimestres têm pesos 3, 3 e 4. A média é calculada por:
 (3 × 1º trimestre + 3 × 2º trimestre + 4 × 3º trimestre) ÷ 10
 ```
 
-A média mínima fixa é `6,0`. Em cada trimestre, a calculadora usa a maior nota entre a avaliação regular e a **E.A.C.** (estratégia de recuperação). Notas aceitas ficam entre `0,0` e `10,0`, com vírgula ou ponto decimal.
+A média mínima fixa é `6,0`. Ao fim de cada trimestre, a **E.A.C.** é uma nota extra: ela soma à avaliação regular daquele trimestre, até o limite de `10,0`. Notas aceitas ficam entre `0,0` e `10,0`, com vírgula ou ponto decimal.
 
 ## Estrutura
 
