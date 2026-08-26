@@ -20,8 +20,13 @@ export function effectiveGrade(noteRaw, eacRaw) {
   const note = parseGrade(noteRaw);
   const eac = parseGrade(eacRaw);
   if (!note.valid || !eac.valid) return { score: null, invalid: true };
-  const values = [note.value, eac.value].filter((value) => value !== null);
-  return { score: values.length ? Math.max(...values) : null, invalid: false };
+  if (note.value === null && eac.value === null) {
+    return { score: null, invalid: false };
+  }
+  return {
+    score: Math.min(MAX_GRADE, (note.value ?? 0) + (eac.value ?? 0)),
+    invalid: false,
+  };
 }
 
 export function calculateReport(entries) {
