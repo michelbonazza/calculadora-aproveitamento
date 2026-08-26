@@ -16,7 +16,7 @@
 - GitHub Pages serve branch `main` pela raiz.
 - Média mínima fixa: `6,0`.
 - Pesos fixos: `3`, `3`, `4`.
-- E.A.C. usa maior valor entre nota e E.A.C. do trimestre.
+- E.A.C. soma à nota do trimestre, com limite de `10,0`.
 - Campos vazios contam como zero somente na projeção.
 - Entradas aceitam vírgula ou ponto, entre `0` e `10`.
 - Sem framework ou dependência de produção.
@@ -84,8 +84,8 @@ test('parseGrade rejects text and values outside zero to ten', () => {
   assert.equal(parseGrade('10,1').valid, false);
 });
 
-test('effectiveGrade uses the larger note or EAC', () => {
-  assert.deepEqual(effectiveGrade('6,5', '8'), { score: 8, invalid: false });
+test('effectiveGrade adds EAC to the trimester grade', () => {
+  assert.deepEqual(effectiveGrade('5', '1'), { score: 6, invalid: false });
   assert.deepEqual(effectiveGrade('', ''), { score: null, invalid: false });
 });
 
